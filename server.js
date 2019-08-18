@@ -71,13 +71,18 @@ app.get('/deleteItem/:id',function (req,res) {
   for all n items in the array DB
 */
 app.get('/totalValue',function (req,res) {
+
+    // calculate the cost and add to total
     let total = 0;
     for (let i = 0; i < db.length; i++) {
         let value = db[i].quantity*db[i].price;
         total += value;
     }
-    res.send('Total warehouse value is ' + total);
+    console.log(total)
+
+    res.send('Warehouse value is ' + total);
 });
+
 
 /* List all items
 - The output should have five columns: id, name, quantity, price, and cost (quantity * price)
