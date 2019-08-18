@@ -85,14 +85,16 @@ app.get('/totalValue',function (req,res) {
 - URL: http://localhost:8080/listAllItems
 */
 app.get('/listAllItems',function (req,res) {
-
+    res.send(generateList());
 });
 
 // build a function that generates a string containing the list of users
 function generateList() {
-    let msg = 'Id  Name  Quantity  Price </br>';
+    let msg = 'Id  Name  Quantity  Price  Cost </br>';
+    let 
     for (let i = 0; i < db.length; i++) {
-        msg += db[i].id + ' | ' + db[i].name + ' | ' + db[i].quantity + ' | ' + db[i].price + '</br>';
+        let cost = db[i].price * db[i].quantity;
+        msg += db[i].id + ' | ' + db[i].name + ' | ' + db[i].quantity + ' | ' + db[i].price +  '|' + cost '</br>';
     }
     return msg;
 }
