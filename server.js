@@ -94,7 +94,7 @@ function generateList() {
     let 
     for (let i = 0; i < db.length; i++) {
         let cost = db[i].price * db[i].quantity;
-        msg += db[i].id + ' | ' + db[i].name + ' | ' + db[i].quantity + ' | ' + db[i].price +  '|' + cost '</br>';
+        msg += db[i].id + ' | ' + db[i].name + ' | ' + db[i].quantity + ' | ' + db[i].price +  '|' + cost + '</br>';
     }
     return msg;
 }
