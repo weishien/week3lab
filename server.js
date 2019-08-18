@@ -33,8 +33,6 @@ app.get('/newItem/:name/:quantity/:price', function(req,res) {
 
     // respond to user with a string 
     res.send('Item added!');
-
-    // res.send(generateList());
 });
 
 
@@ -64,7 +62,6 @@ app.get('/deleteItem/:id',function (req,res) {
 
     // respond to user on the webpage
     res.send('Item deleted!');
-    // res.send(generateList());
 });
 
 
@@ -74,9 +71,12 @@ app.get('/deleteItem/:id',function (req,res) {
   for all n items in the array DB
 */
 app.get('/totalValue',function (req,res) {
+    let total = 0;
     for (let i = 0; i < db.length; i++) {
-        
+        let value = db[i].quantity*db[i].price;
+        total += value;
     }
+    res.send('Total warehouse value is ' + total);
 });
 
 /* List all items
@@ -90,11 +90,10 @@ app.get('/listAllItems',function (req,res) {
 
 // build a function that generates a string containing the list of users
 function generateList() {
-    let msg = 'Id  Name  Quantity  Price  Cost </br>';
-    let 
+    let msg = 'Id Name Quantity Price Cost </br>';
     for (let i = 0; i < db.length; i++) {
         let cost = db[i].price * db[i].quantity;
-        msg += db[i].id + ' | ' + db[i].name + ' | ' + db[i].quantity + ' | ' + db[i].price +  '|' + cost + '</br>';
+        msg += db[i].id + ' | ' + db[i].name + ' | ' + db[i].quantity + ' | ' + db[i].price +  ' | ' + cost + '</br>';
     }
     return msg;
 }
