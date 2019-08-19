@@ -19,7 +19,7 @@ app.get('/newItem/:name/:quantity/:price', function(req,res) {
     let record = {
         // id is randomly created and has to be converted to string to be checked with the id from the url
         // name, quantity and price are from the route parameters
-        id: Math.round(Math.random()*1000).toString(),
+        id: Math.round(Math.random()*1000),
         name : req.params.name,
         quantity : req.params.quantity,
         price : req.params.price
@@ -43,7 +43,7 @@ app.get('/newItem/:name/:quantity/:price', function(req,res) {
 app.get('/deleteItem/:id',function (req,res) {
 
     // retrieve the id from the route parameter
-    let id = req.params.id;
+    let id = parseInt(req.params.id);
 
     // use while loop to search for the matching id
     let index = 0;
