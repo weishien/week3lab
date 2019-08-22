@@ -6,8 +6,10 @@ let express = require('express');
 // create an instance
 let app = express();
 
-// store db in an array
-let db = [];
+let db = require('./app.js');
+
+// // store db in an array
+// let db = [];
 
 
 /* Add a new item to the warehouse through the URL.
@@ -42,7 +44,7 @@ app.get('/newItem/:name/:quantity/:price', function(req,res) {
 */
 app.get('/deleteItem/:id',function (req,res) {
 
-    // retrieve the id from the route parameter
+    // retrieve the id from the route parameter (convert into integer)
     let id = parseInt(req.params.id);
 
     // use while loop to search for the matching id
